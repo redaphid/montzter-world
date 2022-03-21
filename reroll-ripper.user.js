@@ -18,6 +18,7 @@ const getImgUrl = (charNode) =>{
 const ripCharData = (_, charNode)=> {
   return {
     imgUrl: getImgUrl(charNode),
+    name: $(charNode).find('.chracter-name').text(),
   }
 }
 

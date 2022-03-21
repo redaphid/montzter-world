@@ -11,16 +11,25 @@
 
 const getImgUrl = (charNode) =>{
   const imgStyle = $(charNode).find('.generated-preview').attr('style')
+  if(!imgStyle) return ''
   const imgUrl = imgStyle.split('"')[1]
   return imgUrl
 }
 const ripCharData = (_, charNode)=> {
- const imgUrl = getImgUrl(charNode)
- console.log({imgUrl})
+  return {
+    imgUrl: getImgUrl(charNode),
+  }
 }
 
 const letsGo = ()=>{
- const chars = 
-       $('.character-selector').map(ripCharData)
+  const chars = $('.character-selector').map(ripCharData)
+  console.log({chars})
 }
-setTimeout(letsGo, 1500)
+$(document).ready(()=>{
+  const swb = document.createElement('button');
+  swb.innerText = "Rip"
+  swb.onclick = letsGo
+  document.body.appendChild(swb)
+  console.log({swb})
+})
+
